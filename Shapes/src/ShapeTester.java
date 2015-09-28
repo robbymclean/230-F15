@@ -18,7 +18,8 @@ public class ShapeTester {
 //		Shape pentagon 	= new Pentagon(/* TODO parameters? */);
 		Shape hexagon	= new Hexagon();
 		shapes.add(hexagon);
-		Shape square = new Square;		
+		Shape square = new Square();
+		shapes.add(square);
 		
 		for (Shape shape : shapes) {
 			String s = 	"------------------------------------- \n";
