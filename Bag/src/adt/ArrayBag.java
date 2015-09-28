@@ -1,10 +1,12 @@
 package adt;
 
+import java.util.Arrays;
+
 
 public class ArrayBag<T> implements BagInterface<T> {
 
 	private T[] bag;
-	private int numEntries = 0;
+	private int numEntries = 0; // points to the index of the next entry to add
 	private static final int DEFAULT_CAPACITY = 10;
 	
 	public ArrayBag() {
@@ -45,8 +47,10 @@ public class ArrayBag<T> implements BagInterface<T> {
 
 	@Override
 	public T remove() {
-		// TODO Auto-generated method stub
-		return null;
+		numEntries--; // numEntries -= 1 OR numEntries = numEntries - 1
+		T temp = bag[numEntries];
+		bag[numEntries] = null;
+		return temp;
 	}
 
 	@Override
@@ -85,10 +89,13 @@ public class ArrayBag<T> implements BagInterface<T> {
 
 	@Override
 	public T[] toArray() {
-		T[] result = (T[])new Object[numEntries];
-		for (int i = 0; i < numEntries; i++)
-			result[i] = bag[i];
-		return result;
+		//T[] r = new T[numEntries]; // Java won't let us do this
+//		T[] result = (T[])new Object[numEntries];
+//		for (int i = 0; i < numEntries; i++)
+//			result[i] = bag[i];
+		//return result;
+		//return (T[]) bag.clone(); // throws null pointer exception when called in for each
+		return Arrays.copyOf(bag, numEntries);
 	}
 	
 	public String toString() {

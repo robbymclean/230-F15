@@ -1,7 +1,8 @@
 
+
 public class Circle implements Shape  {
 
-private int radius;
+private double radius;
 private int ns;
 	public Circle() {
 	
@@ -11,7 +12,6 @@ private int ns;
 	}
   public double getWidth(){
 	  return radius * 2;
-	  
   }
   
   public double getHeight(){
@@ -40,12 +40,11 @@ public int getNumSides() {
 
 	
 public double getSideLength(){
-	return 0;
+	return radius * 2;
 }
 @Override
 public void setSideLength(double sideLength) {
-
-	
+	radius = sideLength;
 }
 
 
@@ -53,6 +52,7 @@ public void setSideLength(double sideLength) {
 	  Circle c = new Circle();
 	  System.out.println(c.getWidth());
 	  System.out.println(c.getHeight());
+	  System.out.println(c.getArea());
 	  System.out.println(c.getPerimeter());
 	  System.out.println(c.getSideLength());
 	

@@ -1,42 +1,26 @@
 public class Square implements Shape {
 	
-	private int width; 
-	private int height; 
 	public int ns = 4;
-	public double SideLength;
+	public double SideLength = 5;
 	//number sides
 
 
-	
-	public void SizeLength(double SideLength) {
-	SideLength = getPermeter();
-	
-	}
 
-	public double getPermeter(){
-		return getPermeter();
-	}
-	
-	public void setSizeLength(double SideLength){
-		this.setSideLength(SideLength);
-		//- steph d'andrea 
-	}
-	
 	@Override
 	public double getWidth() {
 		// TODO Auto-generated method stub
-		return 0;
+		return SideLength;
 	}
 
 	@Override
 	public double getHeight() {
 		// TODO Auto-generated method stub
-		return 0;
+		return SideLength;
 	}
 
 	@Override
 	public double getArea() {
-		return width * height; 
+		return SideLength * SideLength; 
 	}
 
 	@Override
@@ -56,20 +40,19 @@ public class Square implements Shape {
 	}
 
 	public double getSideLength() {
-		return getArea() * getArea(); 
-		
+		return SideLength; 
 		//- steph d'andrea
 	}
 	
 	public double getPerimeter() {
 		// TODO Auto-generated method stub
-		return 0;
+		return SideLength * 4;
 	}
 
 @Override
 	public void setSideLength(double sideLength) {
 		// TODO Auto-generated method stub
-		
+		SideLength = sideLength;
 	}
 
 	public static void main(String[] args) {
