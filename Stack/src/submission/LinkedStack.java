@@ -1,43 +1,59 @@
 package submission;
 
+import java.util.EmptyStackException;
+
 import adt.Stack;
 
 public class LinkedStack<T> implements Stack<T> {
-	private Node top;
+	private Node topNode;
+	
+	public LinkedStack(){
+		topNode = null;
+	}
 	
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
+		Node newNode = new Node(newEntry, topNode);
+		topNode = newNode;
 		
+	}
+
+	
+	@Override
+	public boolean isEmpty() {
+		return topNode == null;
+		
+	}
+
+
+	@Override
+	public T peek() {
+		if(isEmpty())
+			throw new EmptyStackException();
+		else
+			return topNode.data;
+	
 	}
 
 	@Override
 	public T pop() {
-		// TODO Auto-generated method stub
-		return null;
+		if(topNode != null){
+		  T top = topNode.data;
+		  topNode = topNode.next;
+			return top;
+		}
+		else
+			throw new EmptyStackException();
 	}
-
-	@Override
-	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		topNode = null;
 		
 	}
 	
 	public String toString() {
 		String s = "";
-		for (Node n = top; n != null; n = n.next)
+		for (Node n = topNode; n != null; n = n.next)
 			s += "| " + n.data + " |\n";
 		s+= "+++++\n";
 		return s;
