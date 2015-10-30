@@ -5,23 +5,23 @@ import java.util.EmptyStackException;
 import adt.Stack;
 
 public class LinkedStack<T> implements Stack<T> {
-	private Node topNode;
+	private Node top;
 	
 	public LinkedStack(){
-		topNode = null;
+		top = null;
 	}
 	
 	@Override
 	public void push(T newEntry) {
-		Node newNode = new Node(newEntry, topNode);
-		topNode = newNode;
+		Node newNode = new Node(newEntry, top);
+		top = newNode;
 		
 	}
 
 	
 	@Override
 	public boolean isEmpty() {
-		return topNode == null;
+		return top == null;
 		
 	}
 
@@ -31,29 +31,29 @@ public class LinkedStack<T> implements Stack<T> {
 		if(isEmpty())
 			throw new EmptyStackException();
 		else
-			return topNode.data;
+			return top.data;
 	
 	}
 
 	@Override
 	public T pop() {
-		if(topNode != null){
-		  T top = topNode.data;
-		  topNode = topNode.next;
-			return top;
+		if(top != null){
+		  T head = top.data;
+		  top = top.next;
+			return head;
 		}
 		else
 			throw new EmptyStackException();
 	}
 	@Override
 	public void clear() {
-		topNode = null;
+		top = null;
 		
 	}
 	
 	public String toString() {
 		String s = "";
-		for (Node n = topNode; n != null; n = n.next)
+		for (Node n = top; n != null; n = n.next)
 			s += "| " + n.data + " |\n";
 		s+= "+++++\n";
 		return s;
@@ -75,5 +75,16 @@ public class LinkedStack<T> implements Stack<T> {
 			next = nextNode;	
 		} // end constructor
 	} // end Node
-
+   public static void main(String[]args){
+	   Stack<String> stack = new LinkedStack<>();
+	   stack.push("All");
+	   stack.push("I");
+	   stack.push("Want");
+	   stack.push("is");
+	   stack.push("you");
+	   stack.pop();
+	   
+	  
+	   
+   }
 }
