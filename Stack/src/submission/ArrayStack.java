@@ -1,39 +1,53 @@
 package submission;
 
+import java.util.EmptyStackException;
+
 import adt.Stack;
 
 public class ArrayStack<T> implements Stack<T> {
 	private T[] data;
 	private int top;
+	
 
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
+		data[top + 1] = newEntry;
+		top++;
+		
+	}
+   
+	@Override
+	public T pop() {
+		if(isEmpty())
+			throw new EmptyStackException();
+		else
+		{
+			T head = data[top];
+			data[top] = null;
+			top--;
+			return head;
+		}
 		
 	}
 
 	@Override
-	public T pop() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty())
+			throw new EmptyStackException();
+		else
+			return data[top];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+	
+		return top == 0;
 	}
 
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-		
+	   top = -1;
 	}
 	
 	public String toString() {
