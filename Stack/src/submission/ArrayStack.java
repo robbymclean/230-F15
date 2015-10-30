@@ -57,5 +57,14 @@ public class ArrayStack<T> implements Stack<T> {
 		s+= "+++++\n";
 		return s;
 	}
+	public static void main(String[]args){
+		Stack<String> st = new ArrayStack<>();
+		st.push("A");
+		st.push("B");
+		st.push("C");
+		st.push("D");
+		st.pop();
+		st.push("E");
+	}
 
 }
