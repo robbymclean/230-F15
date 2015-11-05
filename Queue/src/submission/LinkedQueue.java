@@ -1,37 +1,58 @@
 package submission;
 
+
+import java.util.NoSuchElementException;
 import adt.Queue;
 
 public class LinkedQueue<T> implements Queue<T> {
 	private Node head, tail;
 	
+	public LinkedQueue(){
+		head = null;
+		tail = null;
+	}
+	
 	@Override
 	public void enqueue(T newEntry) {
-		// TODO Auto-generated method stub
+		Node newNode = new Node(newEntry, null);
+		if(isEmpty())
+			head = newNode;
+		else
+			tail.next = newNode;
+			tail = newNode;
 		
 	}
 
 	@Override
 	public T dequeue() {
-		// TODO Auto-generated method stub
-		return null;
+	   T front = null;
+	   if(!isEmpty()){
+		   front = head.data;
+		   head = head.next;
+		  if(head == null)
+			  tail = null;
+	   }
+		return front;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty())
+			throw new NoSuchElementException();
+		else
+			return head.data;
+
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return (head == null) && (tail == null);
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		head = null;
+		tail = null;
 		
 	}
 	
@@ -58,6 +79,16 @@ public class LinkedQueue<T> implements Queue<T> {
 			data = dataPortion;
 			next = nextNode;	
 		} // end constructor
-	} // end Node
-
+	}
+	public static void main(String[]args){
+		Queue<String> myQueue = new LinkedQueue<>();
+		myQueue.enqueue("Rob");
+		myQueue.enqueue("Ryan");
+		myQueue.enqueue("Ray");
+		myQueue.enqueue("Ron");
+		String name = myQueue.dequeue();
+		System.out.println(name);
+		System.out.println(myQueue);
+	}
+// end Node
 }
