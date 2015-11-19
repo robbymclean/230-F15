@@ -8,7 +8,7 @@ import submission.ArrayStack;
 public class ArrayStackTest {
 	private Stack<String> stack = new ArrayStack<String>();
 	private static int MAX_CAPACITY = 100;
-
+   
 	@Test
 	public void testClear() {
 		stack.push("A");

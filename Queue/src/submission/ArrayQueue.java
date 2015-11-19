@@ -10,6 +10,7 @@ public class ArrayQueue<T> implements Queue<T> {
 	@Override
 	public void enqueue(T newEntry) {
 		// TODO Auto-generated method stub
+		
 		tail = (tail + 1) % data.length;
 		data[tail] = newEntry;
 		
@@ -65,7 +66,9 @@ public class ArrayQueue<T> implements Queue<T> {
 	
 	public String toString() {
 		String s = data[head].toString();
-		for (int i = head+1 % data.length; i >= 0; i--)
+		for (int i =( head+1) % data.length; 
+				i <=(tail + data.length)% data.length; 
+				i = i + data.length)
 			s += " -> " + data[i];
 		s+= "\n";
 		return s;
@@ -77,5 +80,6 @@ public class ArrayQueue<T> implements Queue<T> {
 	 anotherqueue.enqueue("My major is Comp Sci");
 	 String name = anotherqueue.dequeue();
 	 System.out.println(anotherqueue);
+	 anotherqueue.clear();
  }
 }

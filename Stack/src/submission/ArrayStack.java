@@ -41,13 +41,13 @@ public class ArrayStack<T> implements Stack<T> {
 	@Override
 	public boolean isEmpty() {
 	
-		return top == 0;
+		return top < 0;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-	   top = -1;
+		
+	   top = 0;
 	}
 	
 	public String toString() {
