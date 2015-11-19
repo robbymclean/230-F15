@@ -78,7 +78,13 @@ public class LinkedQueue<T> implements Queue<T> {
 		{
 			data = dataPortion;
 			next = nextNode;	
-		} // end constructor
+		} 
+		public void setData(T d){
+			   data = d;// end constructor
+		}
+		public void setNextNode(Node n){
+			next = n;
+		}
 	}
 	public static void main(String[]args){
 		Queue<String> myQueue = new LinkedQueue<>();
@@ -86,9 +92,11 @@ public class LinkedQueue<T> implements Queue<T> {
 		myQueue.enqueue("Ryan");
 		myQueue.enqueue("Ray");
 		myQueue.enqueue("Ron");
+		myQueue.enqueue("Morgan");
 		String name = myQueue.dequeue();
 		System.out.println(name);
 		System.out.println(myQueue);
 	}
-// end Node
 }
+// end Node
+
