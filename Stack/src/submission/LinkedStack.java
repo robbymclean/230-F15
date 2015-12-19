@@ -37,13 +37,14 @@ public class LinkedStack<T> implements Stack<T> {
 
 	@Override
 	public T pop() {
-		if(top != null){
+		if(!isEmpty()){
 		  T head = top.data;
 		  top = top.next;
 			return head;
 		}
-		else
-			throw new EmptyStackException();
+		else{
+			return null;
+		}
 	}
 	@Override
 	public void clear() {
