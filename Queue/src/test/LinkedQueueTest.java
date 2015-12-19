@@ -1,7 +1,13 @@
 package test;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
+
+
+import org.junit.Test;
+
+
 import adt.Queue;
 import submission.*;
 
@@ -20,7 +26,10 @@ public class LinkedQueueTest {
 	public void testEnqueue() {
 		queue.clear();
 		queue.enqueue("A");
-		String s = "| A |\n+++++\n";
+
+		String s = "A\n";
+
+	
 		assertTrue(queue.toString().equals(s));
 	}
 	
@@ -29,7 +38,21 @@ public class LinkedQueueTest {
 		queue.clear();
 		queue.enqueue("A");
 		queue.enqueue("C");
-		String s = "| C |\n| A |\n+++++\n";
+
+		String s = "A -> C\n";
+
+	
+		assertTrue(queue.toString().equals(s));
+	}
+	
+	@Test
+	public void testEnqueue3() {
+		queue.clear();
+		queue.enqueue("A");
+		queue.enqueue("B");
+		queue.enqueue("C");
+		String s = "A -> B -> C\n";
+
 		assertTrue(queue.toString().equals(s));
 	}
 	
@@ -38,9 +61,11 @@ public class LinkedQueueTest {
 		queue.clear();
 		queue.enqueue("A");
 		queue.enqueue("C");
-		queue.dequeue();
-		String s = "| A |\n+++++\n";
+		String t = queue.dequeue();
+		String s = "C\n";
 		assertTrue(queue.toString().equals(s));
+		assertTrue(t.equals("A"));
+
 	}
 	
 	@Test
@@ -55,9 +80,14 @@ public class LinkedQueueTest {
 		queue.clear();
 		queue.enqueue("A");
 		queue.enqueue("C");
-		queue.peek();
-		queue.peek();
-		String s = "| C |\n| A |\n+++++\n";
+
+		String t = queue.peek();
+		assertTrue(t.equals("A"));
+		t = queue.peek();
+		assertTrue(t.equals("A"));
+		String s = "A -> C\n";
+	
+
 		assertTrue(queue.toString().equals(s));
 	}
 	
@@ -65,12 +95,14 @@ public class LinkedQueueTest {
 	public void testEnqueueMany() {
 		// Should exceed initial capacity
 		queue.clear();
-		String s = "";
-		for (int i = 0; i < MAX_CAPACITY; i++) {
+		String s = Integer.toString(0);
+		queue.enqueue(Integer.toString(0));
+		for (int i = 1; i < MAX_CAPACITY; i++) {
 			queue.enqueue(Integer.toString(i));
-			s = "| " + i + " |\n" + s;
+			s += " -> " + i;
 		}
-		s += "+++++\n";
+		s += "\n";
+		
 		assertTrue(queue.toString().equals(s));
 	}
 

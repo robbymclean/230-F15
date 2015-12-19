@@ -37,16 +37,14 @@ public class LinkedQueue<T> implements Queue<T> {
 
 	@Override
 	public T peek() {
-		if(isEmpty())
-			throw new NoSuchElementException();
-		else
+	
 			return head.data;
 
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return (head == null) && (tail == null);
+		return head == null;
 	}
 
 	@Override
